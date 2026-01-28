@@ -1,0 +1,25 @@
+
+.slds-backdrop,
+.slds-backdrop_open {
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+.required {
+  color: red;
+  margin-left: 4px;
+}
+
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: red;
+}

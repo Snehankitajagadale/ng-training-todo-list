@@ -1,0 +1,143 @@
+<div class="slds-card task-card">
+
+  <div class="slds-card__header slds-grid slds-grid_align-spread">
+    <div>
+      <h2 class="slds-card__header-title">Tasks</h2>
+      <p class="sub-text">All Tasks</p>
+    </div>
+
+    <div>
+      <button class="slds-button slds-button_brand" (click)="newTask()">New Task</button>
+      <button class="slds-button slds-button_neutral slds-m-left_x-small" (click)="refreshTasks()">Refresh</button>
+    </div>
+  </div>
+
+  <div class="slds-grid slds-grid_align-spread slds-p-horizontal_small slds-m-bottom_x-small">
+    <span class="record-count">{{ filteredTasks.length }} records</span>
+
+    <div class="search-box">
+      <input class="slds-input" placeholder="Search"
+             [(ngModel)]="searchText" (input)="applySearch()" />
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>
+
+  <div class="slds-card__body">
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox"
+                   [checked]="selectAllChecked"
+                   (change)="toggleSelectAll($event)" />
+          </th>
+          <th>Assigned To</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Comments</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let task of paginatedTasks">
+          <td>
+            <input type="checkbox"
+                   [checked]="isChecked(task.id!)"
+                   (change)="toggleRow(task.id!, $event)" />
+          </td>
+          <td class="link">{{ task.assignedTo }}</td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.dueDate | date:'dd/MM/yyyy' }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.comments }}</td>
+          <td class="actions">
+            <div class="dropdown">
+              <button (click)="toggleMenu(task.id!); $event.stopPropagation()">⋮</button>
+
+              <div class="menu"
+                   *ngIf="openMenuId === task.id"
+                   (click)="$event.stopPropagation()">
+                <div (click)="editTask(task.id!)">Edit</div>
+                <div (click)="deleteTask(task.id!, task.assignedTo)">Delete</div>
+              </div>
+
+              <div class="modal-backdrop" *ngIf="showDeleteModal" (click)="cancelDelete()"></div>
+
+              <div class="delete-modal" *ngIf="showDeleteModal">
+                <div class="delete-header">Delete</div>
+
+                <div class="delete-body">
+                  Do you want to delete task <b>{{ deleteTaskName }}</b>?
+                </div>
+
+                <div class="delete-footer">
+                  <button class="btn-no" (click)="cancelDelete()">No</button>
+                  <button class="btn-yes" (click)="confirmDelete()">Yes</button>
+                </div>
+              </div>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-footer">
+    <div class="page-size-wrapper">
+      <input
+        type="number"
+        [(ngModel)]="pageSize"
+        min="1"
+        step="1"
+        readonly
+      />
+
+      <div class="spin-buttons">
+        <button (click)="pageSize = pageSize + 1; changePageSize()">▲</button>
+        <button (click)="pageSize = pageSize - 1; changePageSize()" [disabled]="pageSize <= 1">▼</button>
+      </div>
+      <button
+        class="slds-button slds-button_destructive slds-m-left_small"
+        [disabled]="selectedTaskIds.size === 0 || isBulkDeleting"
+        (click)="confirmDeleteSelected()"
+      >
+        Delete Selected
+      </button>
+    </div>
+
+    <div class="pagination">
+      <button (click)="goFirst()" [disabled]="currentPage === 1">« First</button>
+      <button (click)="goPrev()" [disabled]="currentPage === 1">‹ Prev</button>
+      <span>{{ currentPage }}</span>
+      <button (click)="goNext()" [disabled]="currentPage === totalPages">Next ›</button>
+      <button (click)="goLast()" [disabled]="currentPage === totalPages">Last »</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-backdrop" *ngIf="showBulkDeleteModal" (click)="cancelBulkDelete()"></div>
+
+<div class="delete-modal" *ngIf="showBulkDeleteModal">
+  <div class="delete-header">Delete</div>
+
+  <div class="delete-body">
+    Do you want to delete <b>{{ selectedTaskIds.size }}</b> selected task(s)?
+  </div>
+
+  <div class="delete-footer">
+    <button class="btn-no" (click)="cancelBulkDelete()">No</button>
+    <button class="btn-yes" (click)="confirmDeleteSelectedTasks()">Yes</button>
+  </div>
+</div>
+
+<div class="route-modal-backdrop"
+     *ngIf="isModalOpen"
+     (click)="closeModal()"></div>
+
+<div class="route-modal" *ngIf="isModalOpen">
+  <router-outlet></router-outlet>
+</div>

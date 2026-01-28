@@ -1,0 +1,377 @@
+.task-card {
+  margin: 16px;
+  border: 1px solid #dddbda;
+  border-radius: 4px;
+}
+
+.sub-text {
+  font-size: 12px;
+  color: #706e6b;
+}
+
+.slds-table thead th {
+  background-color: #f3f2f2;
+  color: #514f4d;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.slds-table tbody tr {
+  border-bottom: 1px solid #dddbda;
+}
+
+.link {
+  color: #1b96ff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.actions button {
+  background: transparent;
+  border: none;
+  color: #706e6b;
+  font-size: 12px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  color: #1b96ff;
+  text-decoration: underline;
+}
+
+.slds-card__body {
+  padding: 0;
+}
+
+.slds-table td,
+.slds-table th {
+  padding: 10px 12px;
+  vertical-align: middle;
+}
+
+.slds-card__header button {
+  font-size: 13px;
+}
+
+.slds-button_brand {
+  background-color: #f4c542;
+  border-color: #f4c542;
+  color: #000;
+}
+
+.slds-button_brand:hover {
+  background-color: #e0b53a;
+}
+.record-count {
+  font-size: 12px;
+  color: #706e6b;
+}
+
+.search-box {
+  position: relative;
+  width: 200px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  font-size: 14px;
+  color: #706e6b;
+}
+
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #dddbda;
+}
+
+.pagination button {
+  margin: 0 4px;
+  border: 1px solid #dddbda;
+  background: #fff;
+  padding: 4px 8px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  background: #f4c542;
+  border: 1px solid #dddbda;
+  width: 80px;
+  z-index: 1000; 
+}
+
+.menu div {
+  padding: 6px;
+  cursor: pointer;
+}
+
+.menu div:hover {
+  background: #e0b53a;
+}
+
+.dropdown button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #706e6b;
+}
+
+.dropdown button:hover {
+  background-color: #f3f2f2;
+  color: #1b96ff;
+}
+
+.dropdown button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(27, 150, 255, 0.3);
+}
+
+.dropdown button:active {
+  background-color: #e5e5e5;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:transparent;
+  z-index: 2000;
+}
+
+.delete-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  background: #fff;
+  border-radius: 4px;
+  z-index: 2100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.delete-header {
+  background: #c23934;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.delete-body {
+  padding: 20px;
+  font-size: 14px;
+  color: #514f4d;
+}
+
+.delete-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px;
+  gap: 10px;
+}
+
+.delete-footer .btn-no {
+  background: #2e844a;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-footer .btn-yes {
+  background: #f4c542;
+  color: #000;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-footer .btn-no:hover {
+  background: #25723f;
+}
+
+.delete-footer .btn-yes:hover {
+  background: #e0b53a;
+}
+.page-size-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dddbda;
+  border-radius: 4px;
+  width: 90px;
+}
+
+.page-size-wrapper input {
+  border: none;
+  width: 50px;
+  text-align: center;
+}
+
+.spin-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.spin-buttons button {
+  border: none;
+  background: transparent;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.spin-buttons button:hover {
+  background: #f3f2f2;
+}
+
+.route-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 3000;
+}
+
+.route-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3100;
+}
+
+.spin-buttons + button.slds-button_destructive {
+  margin-left: 68px;
+  padding: 6px 16px;
+  font-size: 13px;
+  height: 32px;
+  align-self: center;
+  white-space: nowrap;
+  min-width: 120px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.spin-buttons + button.slds-button_destructive:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spin-buttons + button.slds-button_destructive:hover:not(:disabled) {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .task-card {
+    margin: 8px;
+  }
+
+  .sub-text {
+    font-size: 10px;
+  }
+
+  .slds-card__body {
+    overflow-x: auto;
+  }
+
+  .slds-table td,
+  .slds-table th {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .slds-card__header > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .slds-card__header button,
+  .slds-button_destructive,
+  .slds-button_brand,
+  .slds-button_neutral {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .search-box {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .table-footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .page-size-wrapper {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .page-size-wrapper,
+  .spin-buttons,
+  .spin-buttons + button.slds-button_destructive {
+    width: 100%;
+    margin-left: 0 !important;
+    display: block;
+    text-align: center;
+  }
+
+  .spin-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .spin-buttons + button.slds-button_destructive {
+    margin-left: 0 !important;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .actions button {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+
+  .delete-modal {
+    width: 90%;
+    max-width: 400px;
+  }
+}

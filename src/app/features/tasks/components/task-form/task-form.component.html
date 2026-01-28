@@ -1,0 +1,123 @@
+<div class="slds-modal slds-fade-in-open">
+  <div class="slds-modal__container">
+
+    <header class="slds-modal__header">
+      <h2 class="slds-text-heading_medium">
+        {{ isEditMode ? 'Edit Task' : 'New Task' }}
+      </h2>
+    </header>
+
+   
+    <form #taskForm="ngForm" (ngSubmit)="saveTask()">
+
+      <div class="slds-modal__content slds-p-around_medium">
+
+        <div class="slds-grid slds-wrap">
+
+         
+          <div class="slds-col slds-size_1-of-2 slds-p-right_small">
+           <label class="slds-form-element__label">
+  <span class="required">*</span> Assigned To
+</label>
+
+
+            <input class="slds-input"
+                   name="assignedTo"
+                   required
+                   [(ngModel)]="task.assignedTo"
+                   #assignedTo="ngModel" />
+
+            <div class="error"
+                 *ngIf="assignedTo.invalid && assignedTo.touched">
+              Assigned To is required
+            </div>
+          </div>
+
+          
+          <div class="slds-col slds-size_1-of-2">
+          <label class="slds-form-element__label">
+  <span class="required">*</span> Status
+</label>
+
+
+            <select class="slds-select"
+                    name="status"
+                    required
+                    [(ngModel)]="task.status"
+                    #status="ngModel">
+              <option value="">-- Select Status --</option>
+              <option>Not Started</option>
+              <option>In Progress</option>
+              <option>Completed</option>
+            </select>
+
+            <div class="error"
+                 *ngIf="status.invalid && status.touched">
+              Status is required
+            </div>
+          </div>
+
+          
+          <div class="slds-col slds-size_1-of-2 slds-p-right_small slds-m-top_medium">
+            <label class="slds-form-element__label">Due Date</label>
+            <input type="date"
+                   class="slds-input"
+                   name="dueDate"
+                   [(ngModel)]="task.dueDate" />
+          </div>
+
+          
+          <div class="slds-col slds-size_1-of-2 slds-m-top_medium">
+           <label class="slds-form-element__label">
+  <span class="required">*</span> Priority
+</label>
+
+
+            <select class="slds-select"
+                    name="priority"
+                    required
+                    [(ngModel)]="task.priority"
+                    #priority="ngModel">
+              <option value="">-- Select Priority --</option>
+              <option>Low</option>
+              <option>Normal</option>
+              <option>High</option>
+            </select>
+
+            <div class="error"
+                 *ngIf="priority.invalid && priority.touched">
+              Priority is required
+            </div>
+          </div>
+
+          
+          <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+            <label class="slds-form-element__label">Description</label>
+            <textarea class="slds-textarea"
+                      name="comments"
+                      [(ngModel)]="task.comments"></textarea>
+          </div>
+
+        </div>
+      </div>
+
+    
+      <footer class="slds-modal__footer">
+        <button type="button"
+                class="slds-button slds-button_neutral"
+                (click)="cancel()">
+          Cancel
+        </button>
+
+        <button type="submit"
+                class="slds-button slds-button_brand"
+                [disabled]="taskForm.invalid">
+          Save
+        </button>
+      </footer>
+
+    </form>
+
+
+  </div>
+</div>
